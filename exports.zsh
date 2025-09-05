@@ -5,3 +5,5 @@ elif [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" ]]; then
 else
   export EDITOR='nvim'
 fi
+
+export PATH="$PATH:/var/lib/flatpak/exports/bin:$HOME/.local/bin"
