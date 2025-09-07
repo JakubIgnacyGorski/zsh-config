@@ -1,5 +1,4 @@
 alias src='source ./.venv/bin/activate'
-alias e="$EDITOR"
 alias tcode='tmux new-session \; \
   split-window -h -p 35 \; \
   select-pane -t 1 \; \
