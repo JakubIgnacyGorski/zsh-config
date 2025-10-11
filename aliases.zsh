@@ -14,3 +14,4 @@ alias tpy='tmux new-session \; \
   select-pane -t 0 \; \
   send-keys -t 0 "source ./.venv/bin/activate" C-m \; \
   send-keys -t 0 "nvim ./" C-m'
+alias lg="lazygit"
