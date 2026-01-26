@@ -17,7 +17,7 @@ alias tpy='tmux new-session \; \
 alias lg="lazygit"
 alias bentopdf='echo " > Open http://localhost:3000 to access BentoPDF"
   podman network create --internal no-internet-bentopdf
-  (sleep 1 && xdg-open http://localhost:3000 >/dev/null 2>&1) &
+  (sleep 1 && xdg-open http://localhost:3000 >/dev/null 2>&1) & disown
   podman run --rm \
     --network no-internet-bentopdf \
     -p 127.0.0.1:3000:8080 \
