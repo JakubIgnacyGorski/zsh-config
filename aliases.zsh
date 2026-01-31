@@ -22,5 +22,5 @@ alias bentopdf='echo " > Open http://localhost:3000 to access BentoPDF"
     --network no-internet-bentopdf \
     -p 127.0.0.1:3000:8080 \
     --security-opt=no-new-privileges \
-    ghcr.io/alam00000/bentopdf:latest
+    ghcr.io/alam00000/bentopdf-simple:latest
   podman network remove no-internet-bentopdf'
