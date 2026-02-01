@@ -24,3 +24,13 @@ alias bentopdf='echo " > Open http://localhost:3000 to access BentoPDF"
     --security-opt=no-new-privileges \
     ghcr.io/alam00000/bentopdf-simple:latest
   podman network remove no-internet-bentopdf'
+alias  excalidraw='echo " > Open http://localhost:5000 to access BentoPDF"
+  podman network create --internal no-internet-excalidraw
+  (sleep 1 && xdg-open http://localhost:5000 >/dev/null 2>&1) & disown
+  podman run --rm \
+    --network no-internet-excalidraw \
+    --security-opt=no-new-privileges \
+    -p 127.0.0.1:5000:80 \
+    --name excalidraw \
+    excalidraw/excalidraw:latest 
+  podman network remove no-internet-excalidraw'
