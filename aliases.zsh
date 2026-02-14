@@ -34,3 +34,4 @@ alias  excalidraw='echo " > Open http://localhost:5000 to access BentoPDF"
     --name excalidraw \
     excalidraw/excalidraw:latest 
   podman network remove no-internet-excalidraw'
+alias 7z-smallfiles='f(){ tar -cf "$1".tar "$1" && 7z a -t7z -mx=9 -m0=lzma2 -md=1536m -mfb=273 -ms=on -mmt=off "$1".7z "$1".tar && rm "$1".tar; }; f'
