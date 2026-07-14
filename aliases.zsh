@@ -34,3 +34,4 @@ alias  excalidraw='echo " > Open http://localhost:5000 to access BentoPDF"
     --name excalidraw \
     excalidraw/excalidraw:latest 
   podman network remove no-internet-excalidraw'
+alias ssh='TERM=${TERM/xterm-kitty/xterm-256color} ssh'
