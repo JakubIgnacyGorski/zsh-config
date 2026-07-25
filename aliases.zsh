@@ -2,6 +2,7 @@
 
 alias src='source ./.venv/bin/activate'
 alias ssh='TERM=${TERM/xterm-kitty/xterm-256color} ssh'
+alias ls='ls --color=auto'
 
 # Git aliases
 alias gst='git status'
