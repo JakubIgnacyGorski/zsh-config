@@ -11,6 +11,15 @@ else
 	exit 1
 fi
 
+# Get default shell
+DEFAULT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
+
+# Set zsh as default shell
+if [ "$DEFAULT_SHELL" != "$ZSH_PATH" ]; then
+	echo "$0: Default shell is $DEFAULT_SHELL. Setting zsh as default shell"
+	chsh -s "$(which zsh)"
+fi
+
 if [[ $SCRIPT_DIR == $HOME* ]]; then
 	init_file="${SCRIPT_DIR/#\/home\/$USER/\$HOME}"
 	init_file+="/init.zsh"
