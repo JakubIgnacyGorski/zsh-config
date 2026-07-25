@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 alias src='source ./.venv/bin/activate'
 alias tcode='tmux new-session \; \
   split-window -h -p 35 \; \
@@ -14,7 +16,6 @@ alias tpy='tmux new-session \; \
   select-pane -t 0 \; \
   send-keys -t 0 "source ./.venv/bin/activate" C-m \; \
   send-keys -t 0 "nvim ./" C-m'
-alias lg="lazygit"
 alias bentopdf='echo " > Open http://localhost:3000 to access BentoPDF"
   podman network create --internal no-internet-bentopdf
   (sleep 1 && xdg-open http://localhost:3000 >/dev/null 2>&1) & disown
@@ -35,3 +36,11 @@ alias  excalidraw='echo " > Open http://localhost:5000 to access BentoPDF"
     excalidraw/excalidraw:latest 
   podman network remove no-internet-excalidraw'
 alias ssh='TERM=${TERM/xterm-kitty/xterm-256color} ssh'
+
+# Git aliases
+alias gst='git status'
+alias gcmsg='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias gcl='git clone'
+alias lg='lazygit'
