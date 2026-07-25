@@ -56,5 +56,10 @@ fi
 echo "$0: Set theme as $STARSHIP_PRESET"
 starship preset "$STARSHIP_PRESET" --force -o ~/.config/starship.toml
 
+if ! command -v zoxide >/dev/null 2>&1; then
+	echo "$0: Installing zoxide"
+	curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+fi
+
 # Setup git
 git config --global init.defaultBranch main

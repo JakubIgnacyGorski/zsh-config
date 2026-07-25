@@ -9,4 +9,5 @@ for file in $FILES_TO_SOURCE; do
   source "$CONFIG_DIR/$file"
 done
 
+eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
