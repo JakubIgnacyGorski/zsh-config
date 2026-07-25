@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 if [[ -n "$SSH_TTY" || -n "$SSH_CONNECTION" ]]; then
 	export EDITOR='vim'
 elif [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" ]]; then
