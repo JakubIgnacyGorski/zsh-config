@@ -72,3 +72,4 @@ fi
 
 # Setup git
 git config --global init.defaultBranch main
+git config --global pull.rebase true

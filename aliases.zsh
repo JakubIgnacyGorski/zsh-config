@@ -4,10 +4,14 @@ alias src='source ./.venv/bin/activate'
 alias ssh='TERM=${TERM/xterm-kitty/xterm-256color} ssh'
 alias ls='ls --color=auto'
 
-# Git aliases
+# Git aliases - source: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
 alias gst='git status'
-alias gcmsg='git commit -m'
+alias ga='git add'
+alias gaa='git add --all'
+alias gcmsg='git commit --message'
 alias gp='git push'
 alias gl='git pull'
-alias gcl='git clone'
+alias gcl='git clone --recurse-submodules'
+alias gclf='git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules'
+
 alias lg='lazygit'
