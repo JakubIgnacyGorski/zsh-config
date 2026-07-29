@@ -13,5 +13,6 @@ alias gp='git push'
 alias gl='git pull'
 alias gcl='git clone --recurse-submodules'
 alias gclf='git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules'
+alias gwipe='git reset --hard HEAD && git clean -fd'
 
 alias lg='lazygit'
