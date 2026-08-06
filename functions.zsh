@@ -10,20 +10,14 @@ function y() {
 
 # Auto create new tmux session when can't attach to existing one
 function tmuxa() {
-    sessions=$(tmux list-sessions -F "#{session_name}" 2>/dev/null)
+    local session=$(tmux list-sessions -F "#{session_id}" 2>/dev/null | head -n1)
 
-    if [ -z "$sessions" ]; then
+    if [ -z "$session" ]; then
         tmux new-session
         return
     fi
 
-    target=$(echo "$sessions" | grep -E '^[0-9]+$' | sort -n | head -n 1)
-
-    if [ -z "$target" ]; then
-        tmux attach-session -t "$(echo "$sessions" | head -n 1)"
-    else
-        tmux attach-session -t "$target"
-    fi
+    tmux attach-session -t "$session"
 }
 
 function 7z-smallfiles() {
