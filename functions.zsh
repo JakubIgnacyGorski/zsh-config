@@ -21,7 +21,7 @@ function tmuxa() {
 }
 
 function 7z-smallfiles() {
-  name="$(basename "${1%/}")"
+  local name="$(basename "${1%/}")"
   tar -cf - "$name" | 7z a -si"$name".tar -t7z -mx=9 -m0=lzma2 -md=1536m -mfb=273 -ms=on -mmt=off "$name".7z
 }
 
