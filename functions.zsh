@@ -80,3 +80,14 @@ function excalidraw() {
 
   podman network remove no-internet-excalidraw
 }
+
+function clang-format-r() {
+  find "${1:-.}" \
+    -type d \( -iname 'build' -o -iname 'debug' -o -iname 'release' \) -prune -o \
+    -type f \( \
+    -iname '*.c' -o \
+    -iname '*.h' -o \
+    -iname '*.cpp' -o \
+    -iname '*.hpp' \
+    \) -print0 | xargs -0 clang-format -i
+}
