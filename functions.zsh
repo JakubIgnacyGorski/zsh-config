@@ -1,23 +1,23 @@
 #!/usr/bin/env zsh
 
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd <"$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
 }
 
 # Auto create new tmux session when can't attach to existing one
 function tmuxa() {
-    local session=$(tmux list-sessions -F "#{session_id}" 2>/dev/null | head -n1)
+  local session=$(tmux list-sessions -F "#{session_id}" 2>/dev/null | head -n1)
 
-    if [ -z "$session" ]; then
-        tmux new-session
-        return
-    fi
+  if [ -z "$session" ]; then
+    tmux new-session
+    return
+  fi
 
-    tmux attach-session -t "$session"
+  tmux attach-session -t "$session"
 }
 
 function 7z-smallfiles() {
@@ -51,7 +51,8 @@ function bentopdf() {
 
   podman network create --internal no-internet-bentopdf
 
-  (sleep 1 && xdg-open http://localhost:3000 >/dev/null 2>&1) & disown
+  (sleep 1 && xdg-open http://localhost:3000 >/dev/null 2>&1) &
+  disown
 
   podman run --rm \
     --network no-internet-bentopdf \
@@ -67,7 +68,8 @@ function excalidraw() {
 
   podman network create --internal no-internet-excalidraw
 
-  (sleep 1 && xdg-open http://localhost:5000 >/dev/null 2>&1) & disown
+  (sleep 1 && xdg-open http://localhost:5000 >/dev/null 2>&1) &
+  disown
 
   podman run --rm \
     --network no-internet-excalidraw \
