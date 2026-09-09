@@ -21,5 +21,7 @@ alias gsur='git submodule update --remote --recursive'
 alias gsuir='git submodule update --init --remote --recursive'
 alias gdct='git describe --tags $(git rev-list --tags --max-count=1)'
 alias gd='git diff'
+alias gssha='git rev-parse --short HEAD'
+alias gsha='git rev-parse HEAD'
 
 alias lg='lazygit'
