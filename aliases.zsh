@@ -3,6 +3,7 @@
 alias src='source ./.venv/bin/activate'
 alias ssh='TERM=${TERM/xterm-kitty/xterm-256color} ssh'
 alias ls='ls --color=auto'
+alias joplin="$HOME/.joplin/Joplin.AppImage"
 
 # Git aliases - source: https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
 alias gst='git status'
