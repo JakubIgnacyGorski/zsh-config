@@ -25,4 +25,7 @@ alias gd='git diff'
 alias gssha='git rev-parse --short HEAD'
 alias gsha='git rev-parse HEAD'
 
+alias hotspot-on='nmcli connection up Hotspot'
+alias hotspot-off='nmcli connection down Hotspot'
+
 alias lg='lazygit'
