@@ -13,11 +13,12 @@ fi
 
 # Get default shell
 DEFAULT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
+ZSH_PATH=$(which zsh)
 
 # Set zsh as default shell
 if [ "$DEFAULT_SHELL" != "$ZSH_PATH" ]; then
   echo "$0: Default shell is $DEFAULT_SHELL. Setting zsh as default shell"
-  chsh -s "$(which zsh)"
+  chsh -s "$ZSH_PATH"
 fi
 
 if [[ $SCRIPT_DIR == $HOME* ]]; then
@@ -27,7 +28,7 @@ fi
 
 if [[ ! -f "$ZSHRC" ]]; then
   echo "$0 There is no $ZSHRC creating it"
-  touhc "$ZSHRC"
+  touch "$ZSHRC"
 else
   echo "$0 Checking if $ZSHRC had source init.zsh"
   sed -i.bak '/# >>> jig-zsh-init >>>/,/# <<< jig-zsh-init <<</d' "$ZSHRC"
