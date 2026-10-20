@@ -2,7 +2,7 @@
 
 ZSHRC="$HOME/.zshrc"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-STARSHIP_PRESET="pure-preset"
+STARSHIP_CONFIG="$HOME/.config/starship.toml"
 
 if command -v zsh >/dev/null 2>&1; then
   echo "$0: Found: $(zsh --version)"
@@ -63,8 +63,10 @@ if ! command -v starship >/dev/null 2>&1; then
   echo "$0: Installing starship"
   curl -sS https://starship.rs/install.sh | sh
 fi
-echo "$0: Set theme as $STARSHIP_PRESET"
-starship preset "$STARSHIP_PRESET" --force -o ~/.config/starship.toml
+
+echo "$0: Creating alias of starship config file"
+[[ -f "$STARSHIP_CONFIG" && ! -L "$STARSHIP_CONFIG" ]] && mv -- "$STARSHIP_CONFIG" "${STARSHIP_CONFIG}.$(date +%Y%m%d_%H%M%S).bak"
+ln -sf "$SCRIPT_DIR/config/starship.toml" "$STARSHIP_CONFIG"
 
 if ! command -v zoxide >/dev/null 2>&1; then
   echo "$0: Installing zoxide"
