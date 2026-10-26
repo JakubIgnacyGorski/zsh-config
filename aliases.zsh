@@ -24,6 +24,7 @@ alias gdct='git describe --tags $(git rev-list --tags --max-count=1)'
 alias gd='git diff'
 alias gssha='git rev-parse --short HEAD'
 alias gsha='git rev-parse HEAD'
+alias gloglast='git --no-pager log -1 --format=%B'
 
 alias lg='lazygit'
 
