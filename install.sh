@@ -64,9 +64,14 @@ if ! command -v starship >/dev/null 2>&1; then
   curl -sS https://starship.rs/install.sh | sh
 fi
 
-echo "$0: Creating alias of starship config file"
-[[ -f "$STARSHIP_CONFIG" && ! -L "$STARSHIP_CONFIG" ]] && mv -- "$STARSHIP_CONFIG" "${STARSHIP_CONFIG}.$(date +%Y%m%d_%H%M%S).bak"
-ln -sf "$SCRIPT_DIR/config/starship.toml" "$STARSHIP_CONFIG"
+if [ -f "$STARSHIP_CONFIG" ] && [ ! -L "$STARSHIP_CONFIG" ]; then
+  mv -- "$STARSHIP_CONFIG" "${STARSHIP_CONFIG}.$(date +%Y%m%d_%H%M%S).bak"
+fi
+
+if [ ! -L "$STARSHIP_CONFIG" ] || [ "$(readlink "$STARSHIP_CONFIG")" != "$SCRIPT_DIR/config/starship.toml" ]; then
+  echo "$0: Creating alias of starship config file"
+  ln -sf "$SCRIPT_DIR/config/starship.toml" "$STARSHIP_CONFIG"
+fi
 
 if ! command -v zoxide >/dev/null 2>&1; then
   echo "$0: Installing zoxide"
