@@ -3,7 +3,7 @@
 CONFIG_DIR="$HOME/.config/zsh"
 
 # My configuration
-FILES_TO_SOURCE=("aliases.zsh" "exports.zsh" "functions.zsh" "settings.zsh" "zinit.zsh")
+FILES_TO_SOURCE=("exports.zsh" "functions.zsh" "settings.zsh" "aliases.zsh" "zinit.zsh")
 
 for file in $FILES_TO_SOURCE; do
   source "$CONFIG_DIR/$file"

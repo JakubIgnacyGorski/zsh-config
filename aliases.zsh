@@ -13,6 +13,7 @@ alias gcmsg='git commit --message'
 alias gp='git push'
 alias gl='git pull'
 alias gco='git checkout'
+alias gcm="git checkout $(git_main_branch)"
 alias gcb='git checkout -b'
 alias gcl='git clone --recurse-submodules'
 alias gclf='git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules'

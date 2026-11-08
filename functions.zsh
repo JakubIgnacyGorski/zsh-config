@@ -91,3 +91,30 @@ function clang-format-r() {
     -iname '*.hpp' \
     \) -print0 | xargs -0 clang-format -i
 }
+
+# SOURCE: https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh
+# Get the default branch name from common branch names or fallback to remote HEAD
+function git_main_branch() {
+  command git rev-parse --git-dir &>/dev/null || return
+  
+  local remote ref
+  
+  for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default,stable,master}; do
+    if command git show-ref -q --verify $ref; then
+      echo ${ref:t}
+      return 0
+    fi
+  done
+  
+  # Fallback: try to get the default branch from remote HEAD symbolic refs
+  for remote in origin upstream; do
+    ref=$(command git rev-parse --abbrev-ref $remote/HEAD 2>/dev/null)
+    if [[ $ref == $remote/* ]]; then
+      echo ${ref#"$remote/"}; return 0
+    fi
+  done
+
+  # If no main branch was found, fall back to main but return error
+  echo main
+  return 1
+}
