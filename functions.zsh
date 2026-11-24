@@ -118,3 +118,14 @@ function git_main_branch() {
   echo main
   return 1
 }
+
+function windows() {
+  local id
+  id=$(sudo efibootmgr | awk '/Windows Boot Manager/ {gsub(/\*/, "", $1); sub(/^Boot/, "", $1); print $1; exit}')
+  if [[ -z "$id" ]]; then
+    echo "Couldn't find Windows Boot Manager"
+    return 1
+  fi
+  echo "Rebooting to Windows (Boot$id)..."
+  sudo efibootmgr -n "$id" && systemctl reboot
+}
