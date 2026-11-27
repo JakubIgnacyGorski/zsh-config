@@ -38,3 +38,5 @@ alias hotspot-off='nmcli connection down Hotspot'
 
 # Due to Brave corrupting fonts some flatpak apps not work
 alias repair-font='fc-cache -rf'
+
+alias tx='tmuxa'
