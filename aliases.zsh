@@ -36,7 +36,7 @@ alias ....="cd ../../.."
 alias hotspot-on='nmcli connection up Hotspot'
 alias hotspot-off='nmcli connection down Hotspot'
 
-# Due to Brave corrupting fonts some flatpak apps not work
-alias repair-font='fc-cache -rf'
+# Due to Brave corrupting fonts some flatpak apps not work: https://github.com/flathub/org.localsend.localsend_app/issues/87#issuecomment-6972966540
+alias repair-font='mv "$HOME/.cache/fontconfig" "$HOME/.cache/fontconfig.bak" && fc-cache -rf'
 
 alias tx='tmuxa'
